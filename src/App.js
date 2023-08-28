@@ -1,24 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+
+import { BrowserRouter as Router,Routes,Route } from 'react-router-dom';
+import LoginRegisterMain from './pages/LoginRegisterMain';
+import MainBody from './pages/MainBody';
+import TwoMinuteGame from './pages/TwoMinuteGame';
+import Drawer from './components/DrawerMui';
+import DrawerMui from './components/DrawerMui';
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+
+    <Router>
+      <Routes>
+        <Route exact path='/' element={<MainBody/>}/>
+        <Route exact path='/logreg' element={<LoginRegisterMain/>}/>
+        <Route exact path='/card' element={<TwoMinuteGame/>}/>
+        <Route exact path='/drawer' element={<DrawerMui/>}/>
+
+
+      </Routes>
+    </Router>
+
+    </>
   );
 }
 

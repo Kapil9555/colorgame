@@ -1,0 +1,14 @@
+.input-text::placeholder{
+ 
+   font-size: 17px;
+   font-weight: 500;
+}
+.input-text{
+    outline: none;
+    border: none;
+    height: 100%;
+    width: 100%;
+}
+.resultScroll::-webkit-scrollbar {
+    display: none;
+  }
