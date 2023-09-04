@@ -6,9 +6,10 @@ import TwoMinuteGame from './pages/TwoMinuteGame';
 import DrawerMui from './components/DrawerMui';
 import AdminHomePage from './adminPanel/AdminHomePage';
 import AdminTwoMinutePanel from './adminPanel/AdminTwoMinutePanel';
-import SocketFile from './pages/SocketFile';
+
 import LandingPage from './pages/LandingPage';
 import LandingRahulPages from './pages/LandingRahulPages';
+import SocketFile from './pages/SocketFile';
 
 
 function App() {
@@ -24,7 +25,7 @@ function App() {
         <Route exact path='/admin' element={<AdminHomePage/>}/>
         <Route exact path='/adminTwo' element={<AdminTwoMinutePanel/>}/> 
 
-      {/* <Route exact path='/socket' element={<SocketFile/>}/> */}
+      <Route exact path='/SocketFile' element={<SocketFile/>}/>
         <Route exact path='/land' element={<LandingPage/>}/>
         <Route exact path='/landR' element={<LandingRahulPages/>}/>
 

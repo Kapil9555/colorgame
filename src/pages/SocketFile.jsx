@@ -1,18 +1,38 @@
-// import React, { useEffect, useState } from 'react';
-// import io from 'socket.io-client';
-
-// const socket = io(" http://127.184.122.0");
-// function SocketFile() {
+import { Box, Typography } from '@mui/material';
+import React, { useEffect, useState } from 'react';
+import openSocket from 'socket.io-client';
 
 
-//   useEffect(()=>{
-//     socket.on('timer',(timestamp)=>{console.log(timestamp)})
-//   },[])
-  
- 
-//   return (
-//     <div>SocketFile</div>
-//   );
-// };
+const socket = openSocket("http://137.184.122.0:5000",{
+    transports: ["websocket"],
+  });
 
-// export default SocketFile;
+function SocketFile() {
+    const [timerData,setTimerData]=useState()
+    
+    useEffect(() => {
+       
+        socket.on('connection', () => {
+          console.log('Connected to server');
+        });
+
+        socket.on('timer', (timestamp) => {
+            setTimerData(timestamp)
+        //   console.log(timestamp);
+        });
+        
+        socket.on('disconnect',(resp)=>{
+            console.log("server disconnected",resp)
+        });
+        
+      }, []); 
+      console.log(timerData)
+  return (
+    <Box>
+      <Typography>Socket.io React Client</Typography>
+     
+    </Box>
+  );
+}
+
+export default SocketFile;
