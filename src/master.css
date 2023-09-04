@@ -12,3 +12,7 @@
 .resultScroll::-webkit-scrollbar {
     display: none;
   }
+
+.placeHolder::placeholder{
+    margin: 10px;
+  }

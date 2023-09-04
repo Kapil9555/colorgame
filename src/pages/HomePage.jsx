@@ -17,11 +17,15 @@ import ludo from '../assets/ludoIcon.webp'
 import otherGame from '../assets/halfLeftBGBox.png'
 import statBg from '../assets/howItWorksBG.png'
 import statCard from '../assets/howItWorkCardBG.png'
+import { useNavigate } from 'react-router-dom';
+import '../GlobalCss.css'
 
 
-const HomePage = ({open,setOpen}) => {
+const HomePage = ({setOpen}) => {
 
-  const { isUserLoggedIn, innerHeight } = useContext(context)
+  const navigate=useNavigate()
+
+  const {  innerHeight } = useContext(context)
 
 
   const sliderData = [
@@ -56,7 +60,8 @@ const HomePage = ({open,setOpen}) => {
       title: "Lucky Digits",
       number:"0-9",
       minuteGame1:`2 Minute Game`,
-      minuteGame2:" Answer the Quiz"
+      minuteGame2:" Answer the Quiz",
+      gameId:1
 
     },
     {
@@ -64,15 +69,18 @@ const HomePage = ({open,setOpen}) => {
       title: "Lucky Digits",
       number:"0-99",
       minuteGame1:"5 Minute Game ",
-      minuteGame2:" Answer the Quiz Earn Bigger"
-
+      minuteGame2:" Answer the Quiz Earn Bigger",
+      gameId:2
+,
+      
     },
     {
       img: card3,
       title: "Lucky Digits",
       number:"0-9",
       minuteGame1:"1 Minute Game ",
-      minuteGame2:"Answer the Quiz"
+      minuteGame2:"Answer the Quiz",
+      gameId:3
 
     },
     {
@@ -80,7 +88,8 @@ const HomePage = ({open,setOpen}) => {
       title: "Lucky Digits",
       number:"0-9",
       minuteGame1:"1 Minute Game ",
-      minuteGame2:" Answer the Quiz"
+      minuteGame2:" Answer the Quiz",
+      gameId:4
 
     },
     {
@@ -88,7 +97,8 @@ const HomePage = ({open,setOpen}) => {
       title: "Lucky Digits",
       number:"0-9",
       minuteGame1:`1 Minute Game`,
-      minuteGame2:" Answer the Quiz"
+      minuteGame2:" Answer the Quiz",
+      gameId:5
 
     }
 
@@ -146,8 +156,15 @@ const gamesData=[
     arrows: false
 
   }
+
+  const handleGameSelector=(ele)=>{
+        if(ele==1){
+          navigate("/card")
+        }
+  }
   
   return (
+   
     <>
       <Box className='RemoveScroll' sx={{ height: `${innerHeight}px`, overflow: "scroll" }}>
         <Grid container>
@@ -162,9 +179,9 @@ const gamesData=[
             <Box>
               <Slide {...proprietes}>
                 {
-                  sliderData.map((ele) => {
+                  sliderData.map((ele,index) => {
                     return (
-                      <Box sx={{ backgroundImage: `url(${ele.img})`, height: "180px", backgroundSize: "100% 100%", backgroundRepeat: "no-repeat" }}>
+                      <Box key={index} sx={{ backgroundImage: `url(${ele.img})`, height: "180px", backgroundSize: "100% 100%", backgroundRepeat: "no-repeat" }}>
 
                       </Box>
                     )
@@ -188,13 +205,13 @@ const gamesData=[
 
 
 
-          <Box sx={{overflow:"scroll"}}>
-            <Box sx={{display:"flex",width:"250%"}}>
+          <Box className="RemoveScroll" sx={{overflow:"scroll"}}>
+            <Box sx={{display:"flex",}}>
                 {
                   chooseGameData.map((ele)=>{
                     return(
-                    
-                      <Box sx={{ pl:"15px",height: "200px", width: "135px", backgroundImage: `url(${ele.img})`, backgroundSize: "100% 100%", backgroundRepeat: "no-repeat" }}>
+                       <Box >
+                      <Box  key={ele.gameId} sx={{ pt:"15px",pl:"15px",height: "200px",width: "135px",cursor:"pointer",backgroundImage: `url(${ele.img})`, backgroundSize: "100% 100%", backgroundRepeat: "no-repeat" }} onClick={()=>{handleGameSelector(ele.gameId)}}>
                            
                            <Box sx={{height:"60%"}}>
                            <Typography sx={{color:"white",fontSize:"1rem",fontWeight:"700",mt:"25px"}}>
@@ -214,6 +231,7 @@ const gamesData=[
                             <Box sx={{display:"flex",justifyContent:"center",ml:"-15px"}}>
                             <Button variant='contained' sx={{display:"flex",alignItems:"center",letterSpacing:"-1px",color:"#424242",bgcolor:"#cfd8dc",borderRadius:"25px",p:"3px 13px",fontWeight:"600"}}>Play Now <ArrowForwardIcon sx={{color:"black",fontSize:"15px"}}/></Button>
                            </Box>
+                        </Box>
                       </Box>
                     
                     )
@@ -233,11 +251,11 @@ const gamesData=[
                 VIEW ALL
               </Typography>
             </Box>
-            <Box sx={{pl:"15px",ml:"12px",display:"flex",backgroundImage:`url(${otherGame})`,backgroundSize:"100% 100%",backgroundRepeat:"no-repeat",overflow:"scroll",width:"100%"}}>
+            <Box className="RemoveScroll" sx={{pl:"15px",ml:"12px",display:"flex",backgroundImage:`url(${otherGame})`,backgroundSize:"100% 100%",backgroundRepeat:"no-repeat",overflow:"scroll",width:"100%"}}>
             {
-              gamesData.map((ele)=>{
+              gamesData.map((ele,index)=>{
                 return(
-                  <Box sx={{m:"10px 6px"}}>
+                  <Box key={index} sx={{m:"10px 6px"}}>
                     <Box sx={{backgroundImage:`url(${ele.img})`,backgroundSize:"100% 100%",backgroundRepeat:"no-repeat",height:"60px",width:"60px",borderRadius:"50px"}}>
                        
                     </Box>

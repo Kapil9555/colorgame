@@ -17,7 +17,6 @@ import { USER_TOKEN } from '../constant';
 
 const AccountPage = () => {
 
-const navigate=useNavigate
 
   const {isUserLoggedIn,innerHeight}=useContext(context)
   console.log(isUserLoggedIn);
