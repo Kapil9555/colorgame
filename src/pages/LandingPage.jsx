@@ -46,7 +46,7 @@ const LandingPage = () => {
     return (
         <>
             <Container maxWidth={'xl'} disableGutters >
-                <Grid container sx={{ justifyContent: "center", alignItems: "center", bgcolor: "#f1f3f6" }}>
+                <Grid container sx={{ justifyContent: "center", alignItems: "center", bgcolor: "#f1f3f6",overflow:"hidden" }}>
                     <Grid item xs={12} sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', }}>
                         <Grid container sx={{ justifyContent: 'space-between', alignItems: 'center', padding: '10px 5px ', boxShadow: '1px 1px 5px 0px rgba(0,0,0,0.75)' }}>
                             <Grid item xs={2} sx={{ display: 'flex', }}>
